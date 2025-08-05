@@ -5,11 +5,6 @@ export const precinctSchema = z.object({
   name: z.string(),
   county: z.string(),
   precinct_number: z.string(),
-  population: z.number(),
-  rental_households: z.number(),
-  median_household_income: z.number(),
-  poverty_rate: z.number(),
-  child_poverty_rate: z.number().optional(),
   geometry: z.object({
     type: z.literal("Polygon"),
     coordinates: z.array(z.array(z.array(z.number())))

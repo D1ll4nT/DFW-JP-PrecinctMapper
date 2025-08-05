@@ -134,38 +134,11 @@ export default function InteractiveMap({
             onEachFeature={(feature, layer) => onEachFeature(precinct, layer)}
           >
             <Popup>
-              <div className="min-w-[280px] p-2">
-                <h3 className="font-bold text-lg text-gray-900 mb-3">{precinct.name}</h3>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">County:</span>
-                    <span className="font-medium">{precinct.county}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Population:</span>
-                    <span className="font-medium">{Math.round(precinct.population).toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Rental Households:</span>
-                    <span className="font-medium">{Math.round(precinct.rental_households).toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Median Income:</span>
-                    <span className="font-medium">${Math.round(precinct.median_household_income).toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Poverty Rate:</span>
-                    <span className="font-medium">{(precinct.poverty_rate * 100).toFixed(1)}%</span>
-                  </div>
-                  {precinct.child_poverty_rate && (
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Child Poverty:</span>
-                      <span className="font-medium">{(precinct.child_poverty_rate * 100).toFixed(1)}%</span>
-                    </div>
-                  )}
-                </div>
-                <div className="mt-3 pt-2 border-t border-gray-200 text-center">
-                  <span className="text-blue-600 text-sm font-medium">Click for detailed information</span>
+              <div className="min-w-[200px] p-3 text-center">
+                <h3 className="font-bold text-lg text-gray-900 mb-2">{precinct.name}</h3>
+                <div className="text-sm text-gray-600">
+                  <p className="font-medium">{precinct.county}</p>
+                  <p>Precinct #{precinct.precinct_number}</p>
                 </div>
               </div>
             </Popup>

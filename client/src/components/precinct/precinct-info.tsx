@@ -1,7 +1,6 @@
-import { X, MapPin, Users, DollarSign, TrendingDown, Phone } from "lucide-react";
+import { X, MapPin, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { Precinct } from "@shared/schema";
 
 interface PrecinctInfoProps {
@@ -13,11 +12,9 @@ export default function PrecinctInfo({ selectedPrecinct, onClose }: PrecinctInfo
   if (!selectedPrecinct) {
     return (
       <div className="p-6 text-center">
-        <img 
-          src="https://pixabay.com/get/g0a8a5fc4a7002414e1092d5b891a56a3ed7d33155a352638c9abb03f1ba53b440b9e141eedc49c08d417b33d247930415c59bf330ca32b13284a6e71c4e08e1d_1280.jpg" 
-          alt="Government building exterior" 
-          className="mx-auto rounded-lg mb-4 shadow-md max-w-full h-32 object-cover" 
-        />
+        <div className="w-16 h-16 mx-auto bg-blue-100 rounded-full flex items-center justify-center mb-4">
+          <Building2 className="w-8 h-8 text-blue-600" />
+        </div>
         <h3 className="text-lg font-semibold text-gray-900 mb-2">Find Your JP Precinct</h3>
         <p className="text-gray-600 text-sm mb-4">
           Enter an address above or click on the map to identify which Justice of the Peace precinct serves your area.
@@ -25,7 +22,7 @@ export default function PrecinctInfo({ selectedPrecinct, onClose }: PrecinctInfo
         
         <Card className="bg-blue-50 border-blue-200">
           <CardContent className="pt-4">
-            <h4 className="font-medium text-gov-blue mb-2">Coverage Area</h4>
+            <h4 className="font-medium text-blue-700 mb-2">Coverage Area</h4>
             <div className="text-sm text-gray-700 space-y-1">
               <div>• <strong>Collin County:</strong> 4 precincts</div>
               <div>• <strong>Dallas County:</strong> 5 precincts</div>
@@ -37,22 +34,6 @@ export default function PrecinctInfo({ selectedPrecinct, onClose }: PrecinctInfo
       </div>
     );
   }
-
-  const formatNumber = (num: number) => {
-    return new Intl.NumberFormat().format(Math.round(num));
-  };
-
-  const formatCurrency = (num: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      maximumFractionDigits: 0
-    }).format(num);
-  };
-
-  const formatPercentage = (num: number) => {
-    return (num * 100).toFixed(1) + '%';
-  };
 
   return (
     <div className="p-6 slide-in">
@@ -72,55 +53,43 @@ export default function PrecinctInfo({ selectedPrecinct, onClose }: PrecinctInfo
       <div className="space-y-4">
         <Card className="bg-blue-50 border-blue-200">
           <CardHeader className="pb-3">
-            <CardTitle className="text-gov-blue flex items-center gap-2">
-              <Users className="w-5 h-5" />
-              Demographics
+            <CardTitle className="text-blue-700 flex items-center gap-2">
+              <Building2 className="w-5 h-5" />
+              Justice of the Peace Information
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4 text-sm">
-              <div>
-                <div className="text-gray-600">Population</div>
-                <div className="font-semibold text-lg">{formatNumber(selectedPrecinct.population)}</div>
-              </div>
-              <div>
-                <div className="text-gray-600">Rental Households</div>
-                <div className="font-semibold text-lg">{formatNumber(selectedPrecinct.rental_households)}</div>
-              </div>
-              <div>
-                <div className="text-gray-600 flex items-center gap-1">
-                  <DollarSign className="w-3 h-3" />
-                  Median Income
-                </div>
-                <div className="font-semibold text-lg">{formatCurrency(selectedPrecinct.median_household_income)}</div>
-              </div>
-              <div>
-                <div className="text-gray-600 flex items-center gap-1">
-                  <TrendingDown className="w-3 h-3" />
-                  Poverty Rate
-                </div>
-                <div className="font-semibold text-lg">{formatPercentage(selectedPrecinct.poverty_rate)}</div>
-              </div>
+          <CardContent>
+            <div className="text-sm text-gray-700">
+              <p className="mb-2">
+                <strong>Jurisdiction:</strong> {selectedPrecinct.county}
+              </p>
+              <p className="mb-2">
+                <strong>Precinct Number:</strong> {selectedPrecinct.precinct_number}
+              </p>
+              <p className="text-xs text-gray-500 mt-4">
+                Justice of the Peace courts handle small claims, traffic violations, 
+                and other local legal matters for residents within this precinct boundary.
+              </p>
             </div>
           </CardContent>
         </Card>
 
-        <Separator />
-
-        <Card className="bg-gray-50 border-gray-200">
+        <Card>
           <CardHeader className="pb-3">
-            <CardTitle className="text-gray-900 flex items-center gap-2">
-              <Phone className="w-5 h-5" />
-              Court Information
+            <CardTitle className="text-gray-800 flex items-center gap-2">
+              <MapPin className="w-5 h-5" />
+              Boundary Information
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-gray-600 mb-3">
-              This precinct is served by the Justice of the Peace Court for {selectedPrecinct.county}.
-            </p>
-            <Button className="w-full bg-gov-blue hover:bg-gov-blue/90">
-              Contact Court Information
-            </Button>
+            <div className="text-sm text-gray-700">
+              <p className="mb-2">
+                This precinct covers a specific geographic area within {selectedPrecinct.county}.
+              </p>
+              <p className="text-xs text-gray-500">
+                Use the address search above to confirm if a specific location falls within this precinct's jurisdiction.
+              </p>
+            </div>
           </CardContent>
         </Card>
       </div>
