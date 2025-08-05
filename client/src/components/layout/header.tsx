@@ -12,23 +12,28 @@ export default function Header() {
         />
       </div>
       
-      <div className="relative z-10 container mx-auto px-4 py-4">
+      <div className="relative z-10 container mx-auto px-3 lg:px-4 py-3 lg:py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
-              <MapPin className="w-6 h-6 text-white" />
+          <div className="flex items-center space-x-2 lg:space-x-4">
+            <div className="w-10 h-10 lg:w-12 lg:h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+              <MapPin className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold">JP Precinct Finder</h1>
-              <p className="text-blue-200 text-sm">North Texas Justice of the Peace Court Locator</p>
+              <h1 className="text-lg lg:text-2xl font-bold">JP Precinct Finder</h1>
+              <p className="text-blue-200 text-xs lg:text-sm">North Texas Justice of the Peace Court Locator</p>
             </div>
           </div>
           
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden sm:flex items-center space-x-3 lg:space-x-6">
             <div className="text-right">
-              <div className="text-sm font-medium">Coverage Area</div>
+              <div className="text-xs lg:text-sm font-medium">Coverage Area</div>
               <div className="text-xs text-blue-200">Collin • Dallas • Denton • Tarrant</div>
             </div>
+          </div>
+          
+          <div className="sm:hidden text-right">
+            <div className="text-xs font-medium">4 Counties</div>
+            <div className="text-xs text-blue-200">23 Precincts</div>
           </div>
         </div>
       </div>

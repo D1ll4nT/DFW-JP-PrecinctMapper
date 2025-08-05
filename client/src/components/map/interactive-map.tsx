@@ -134,11 +134,19 @@ export default function InteractiveMap({
             onEachFeature={(feature, layer) => onEachFeature(precinct, layer)}
           >
             <Popup>
-              <div className="min-w-[200px] p-3 text-center">
-                <h3 className="font-bold text-lg text-gray-900 mb-2">{precinct.name}</h3>
+              <div className="min-w-[200px] max-w-[280px] p-3 text-center">
+                <h3 className="font-bold text-base lg:text-lg text-gray-900 mb-2">{precinct.name}</h3>
                 <div className="text-sm text-gray-600">
                   <p className="font-medium">{precinct.county}</p>
                   <p>Precinct #{precinct.precinct_number}</p>
+                </div>
+                <div className="mt-3 lg:hidden">
+                  <button 
+                    onClick={() => onPrecinctSelect(precinct)}
+                    className="text-xs bg-blue-600 text-white px-3 py-1 rounded-md hover:bg-blue-700"
+                  >
+                    View Details
+                  </button>
                 </div>
               </div>
             </Popup>
@@ -156,8 +164,8 @@ export default function InteractiveMap({
         )}
       </MapContainer>
 
-      {/* Map Legend */}
-      <div className="absolute top-4 right-4 bg-white rounded-lg shadow-lg p-4 z-20 max-w-xs">
+      {/* Map Legend - Hidden on small mobile screens */}
+      <div className="absolute top-4 right-4 bg-white rounded-lg shadow-lg p-3 lg:p-4 z-20 max-w-xs hidden sm:block">
         <h4 className="font-semibold text-sm mb-3 text-gray-900">North Texas JP Precincts</h4>
         <div className="space-y-2 text-xs">
           <div className="flex items-center space-x-2">
@@ -191,14 +199,29 @@ export default function InteractiveMap({
         </div>
       </div>
 
-      {/* Mobile Toggle Button */}
-      <Button
-        className="md:hidden fixed top-24 left-4 z-30 bg-white text-gray-600 shadow-lg hover:bg-gray-50"
-        variant="outline"
-        onClick={onMobileToggle}
-      >
-        <Menu className="w-6 h-6" />
-      </Button>
+      {/* Mobile Controls */}
+      <div className="lg:hidden">
+        {/* Mobile Toggle Button */}
+        <Button
+          className="fixed top-20 left-4 z-30 bg-white text-gray-600 shadow-lg hover:bg-gray-50"
+          variant="outline"
+          size="sm"
+          onClick={onMobileToggle}
+        >
+          <Menu className="w-5 h-5" />
+        </Button>
+        
+        {/* Mobile Reset Button */}
+        <Button
+          className="fixed top-20 right-4 z-30 bg-white text-gray-600 shadow-lg hover:bg-gray-50"
+          variant="outline"
+          size="sm"
+          onClick={resetMapView}
+          title="Reset Map View"
+        >
+          <RotateCcw className="w-5 h-5" />
+        </Button>
+      </div>
     </div>
   );
 }

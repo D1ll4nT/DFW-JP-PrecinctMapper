@@ -14,23 +14,53 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
-      <div className="flex h-screen">
-        <Sidebar
-          selectedPrecinct={selectedPrecinct}
-          selectedCounty={selectedCounty}
-          onCountyChange={setSelectedCounty}
-          onPrecinctSelect={setSelectedPrecinct}
-          onSearchResult={(coordinates) => setSearchCoordinates(coordinates)}
-          isMobileOpen={isMobileSidebarOpen}
-          onMobileToggle={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
-        />
+      <div className="flex h-screen relative">
+        {/* Desktop Sidebar */}
+        <div className="hidden lg:block">
+          <Sidebar
+            selectedPrecinct={selectedPrecinct}
+            selectedCounty={selectedCounty}
+            onCountyChange={setSelectedCounty}
+            onPrecinctSelect={setSelectedPrecinct}
+            onSearchResult={(coordinates) => setSearchCoordinates(coordinates)}
+            isMobileOpen={false}
+            onMobileToggle={() => {}}
+          />
+        </div>
+        
+        {/* Mobile Sidebar Overlay */}
+        {isMobileSidebarOpen && (
+          <div className="lg:hidden fixed inset-0 z-50 flex">
+            <div className="fixed inset-0 bg-black bg-opacity-50" onClick={() => setIsMobileSidebarOpen(false)} />
+            <div className="relative w-80 max-w-xs bg-white h-full shadow-xl">
+              <Sidebar
+                selectedPrecinct={selectedPrecinct}
+                selectedCounty={selectedCounty}
+                onCountyChange={setSelectedCounty}
+                onPrecinctSelect={setSelectedPrecinct}
+                onSearchResult={(coordinates) => {
+                  setSearchCoordinates(coordinates);
+                  setIsMobileSidebarOpen(false);
+                }}
+                isMobileOpen={true}
+                onMobileToggle={() => setIsMobileSidebarOpen(false)}
+              />
+            </div>
+          </div>
+        )}
         
         <div className="flex-1 relative">
           <InteractiveMap
             selectedCounty={selectedCounty}
             selectedPrecinct={selectedPrecinct}
             searchCoordinates={searchCoordinates}
-            onPrecinctSelect={setSelectedPrecinct}
+            onPrecinctSelect={(precinct) => {
+              setSelectedPrecinct(precinct);
+              // On mobile, show sidebar when a precinct is selected
+              if (window.innerWidth < 1024) {
+                setIsMobileSidebarOpen(true);
+              }
+            }}
             onMobileToggle={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
           />
         </div>

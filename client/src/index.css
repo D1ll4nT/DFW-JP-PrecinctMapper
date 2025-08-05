@@ -57,3 +57,71 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
 }
+
+/* Mobile optimizations for Leaflet map */
+@media (max-width: 1024px) {
+  .leaflet-control-container .leaflet-control {
+    margin: 8px !important;
+  }
+  
+  .leaflet-popup-content-wrapper {
+    border-radius: 8px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+    max-width: 280px !important;
+  }
+  
+  .leaflet-popup-content {
+    margin: 12px 16px 8px 16px !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* Make map elements more touch-friendly */
+  .leaflet-interactive {
+    cursor: pointer !important;
+  }
+  
+  /* Improve popup close button for mobile */
+  .leaflet-popup-close-button {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 18px !important;
+    line-height: 28px !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-radius: 50% !important;
+  }
+  
+  /* Better zoom controls for mobile */
+  .leaflet-control-zoom {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+  }
+  
+  .leaflet-control-zoom a {
+    width: 36px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+    font-size: 18px !important;
+  }
+}
+
+/* Prevent zooming on double tap but allow pinch zoom */
+.leaflet-container {
+  touch-action: pan-x pan-y;
+}
+
+/* Slide in animation for mobile sidebar */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}

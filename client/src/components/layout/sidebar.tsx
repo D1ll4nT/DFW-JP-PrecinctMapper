@@ -1,3 +1,5 @@
+import { X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import AddressSearch from "@/components/search/address-search";
 import CountyFilter from "@/components/search/county-filter";
@@ -24,13 +26,19 @@ export default function Sidebar({
   onMobileToggle
 }: SidebarProps) {
   return (
-    <div className={cn(
-      "w-96 bg-white shadow-xl z-20 flex flex-col transition-transform duration-300",
-      "md:translate-x-0",
-      isMobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
-    )}>
+    <div className="w-full h-full bg-white shadow-xl z-20 flex flex-col">
+      {/* Mobile Header with Close Button */}
+      {isMobileOpen && (
+        <div className="lg:hidden flex items-center justify-between p-4 border-b border-gray-200 bg-blue-50">
+          <h2 className="text-lg font-semibold text-gray-900">JP Precinct Finder</h2>
+          <Button variant="ghost" size="sm" onClick={onMobileToggle}>
+            <X className="w-5 h-5" />
+          </Button>
+        </div>
+      )}
+      
       {/* Search Section */}
-      <div className="p-6 border-b border-gray-200">
+      <div className="p-4 lg:p-6 border-b border-gray-200">
         <AddressSearch 
           onSearchResult={(result) => {
             if (result.precinct) {
@@ -42,7 +50,7 @@ export default function Sidebar({
       </div>
 
       {/* County Filter */}
-      <div className="p-6 border-b border-gray-200">
+      <div className="p-4 lg:p-6 border-b border-gray-200">
         <CountyFilter 
           selectedCounty={selectedCounty}
           onCountyChange={onCountyChange}
