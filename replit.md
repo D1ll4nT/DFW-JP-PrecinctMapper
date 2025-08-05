@@ -2,7 +2,7 @@
 
 ## Overview
 
-The JP Precinct Finder is a web application designed to help users locate which Justice of the Peace (JP) precinct an address belongs to across four North Texas counties: Collin, Dallas, Denton, and Tarrant. The application provides both an interactive map interface and address search functionality to identify precinct boundaries and display relevant demographic and statistical information for each precinct.
+The JP Precinct Finder is a web application designed to help users locate which Justice of the Peace (JP) precinct an address belongs to across four North Texas counties: Collin, Dallas, Denton, and Tarrant. The application provides both an interactive map interface and address search functionality to identify precinct boundaries with comprehensive boundary visualization. The focus is specifically on precinct boundaries and jurisdiction information without demographic data.
 
 ## User Preferences
 
@@ -30,9 +30,9 @@ The backend follows a RESTful API design pattern with Express.js:
 ### Data Storage Solutions
 The application currently uses an in-memory storage system for development purposes:
 
-- **Precinct Data**: GeoJSON format storing precinct boundaries, demographics, and administrative information
+- **Precinct Data**: Comprehensive GeoJSON format storing 23 JP precinct boundaries with detailed coordinate data from the North Texas Evictions Project
 - **Geocoding**: Mock geocoding service for address-to-coordinate conversion
-- **Database Schema**: Defined using Drizzle ORM schemas with PostgreSQL dialect configuration for future production deployment
+- **Database Schema**: Simplified Drizzle ORM schemas focused on boundary data without demographic information, configured for PostgreSQL
 
 ### Authentication and Authorization
 Currently, the application does not implement authentication or authorization mechanisms, as it serves public geographic data. The architecture is prepared for future implementation if user-specific features are required.
