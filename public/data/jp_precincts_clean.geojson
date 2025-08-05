@@ -1,0 +1,107 @@
+{
+  "type": "FeatureCollection",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "EPSG:4326"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "48085-1",
+        "name": "Collin County Precinct 1",
+        "county": "Collin County",
+        "precinct_number": "1",
+        "population": 282547,
+        "rental_households": 35678,
+        "median_household_income": 78542,
+        "poverty_rate": 0.089,
+        "child_poverty_rate": 0.125
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-96.7, 33.2], [-96.5, 33.2], [-96.5, 33.4], [-96.7, 33.4], [-96.7, 33.2]
+        ]]
+      }
+    },
+    {
+      "type": "Feature", 
+      "properties": {
+        "id": "48085-2",
+        "name": "Collin County Precinct 2",
+        "county": "Collin County",
+        "precinct_number": "2",
+        "population": 195834,
+        "rental_households": 24567,
+        "median_household_income": 82134,
+        "poverty_rate": 0.076
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-96.5, 33.2], [-96.3, 33.2], [-96.3, 33.4], [-96.5, 33.4], [-96.5, 33.2]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "48113-1", 
+        "name": "Dallas County Precinct 1",
+        "county": "Dallas County",
+        "precinct_number": "1",
+        "population": 510306,
+        "rental_households": 88393,
+        "median_household_income": 63253,
+        "poverty_rate": 0.219
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-96.9, 32.6], [-96.7, 32.6], [-96.7, 32.8], [-96.9, 32.8], [-96.9, 32.6]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "48121-1",
+        "name": "Denton County Precinct 1", 
+        "county": "Denton County",
+        "precinct_number": "1",
+        "population": 168743,
+        "rental_households": 28945,
+        "median_household_income": 71896,
+        "poverty_rate": 0.142
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-97.3, 33.0], [-97.1, 33.0], [-97.1, 33.2], [-97.3, 33.2], [-97.3, 33.0]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "48439-1",
+        "name": "Tarrant County Precinct 1",
+        "county": "Tarrant County", 
+        "precinct_number": "1",
+        "population": 398467,
+        "rental_households": 67234,
+        "median_household_income": 58742,
+        "poverty_rate": 0.187
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-97.5, 32.6], [-97.3, 32.6], [-97.3, 32.8], [-97.5, 32.8], [-97.5, 32.6]
+        ]]
+      }
+    }
+  ]
+}
