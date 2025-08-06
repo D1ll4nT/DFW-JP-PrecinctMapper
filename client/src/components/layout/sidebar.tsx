@@ -11,7 +11,7 @@ interface SidebarProps {
   selectedCounty: string;
   onCountyChange: (county: string) => void;
   onPrecinctSelect: (precinct: Precinct | null) => void;
-  onSearchResult: (coordinates: {lat: number, lng: number} | null) => void;
+  onSearchResult: (result: { coordinates: {lat: number, lng: number} | null, precinct: Precinct | null }) => void;
   isMobileOpen: boolean;
   onMobileToggle: () => void;
 }
@@ -44,7 +44,10 @@ export default function Sidebar({
             if (result.precinct) {
               onPrecinctSelect(result.precinct);
             }
-            onSearchResult(result.coordinates);
+            onSearchResult({
+              coordinates: result.coordinates,
+              precinct: result.precinct
+            });
           }}
         />
       </div>

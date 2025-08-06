@@ -22,7 +22,14 @@ export default function Home() {
             selectedCounty={selectedCounty}
             onCountyChange={setSelectedCounty}
             onPrecinctSelect={setSelectedPrecinct}
-            onSearchResult={(coordinates) => setSearchCoordinates(coordinates)}
+            onSearchResult={(result) => {
+              if (result.coordinates) {
+                setSearchCoordinates(result.coordinates);
+              }
+              if (result.precinct) {
+                setSelectedPrecinct(result.precinct);
+              }
+            }}
             isMobileOpen={false}
             onMobileToggle={() => {}}
           />
@@ -38,8 +45,13 @@ export default function Home() {
                 selectedCounty={selectedCounty}
                 onCountyChange={setSelectedCounty}
                 onPrecinctSelect={setSelectedPrecinct}
-                onSearchResult={(coordinates) => {
-                  setSearchCoordinates(coordinates);
+                onSearchResult={(result) => {
+                  if (result.coordinates) {
+                    setSearchCoordinates(result.coordinates);
+                  }
+                  if (result.precinct) {
+                    setSelectedPrecinct(result.precinct);
+                  }
                   setIsMobileSidebarOpen(false);
                 }}
                 isMobileOpen={true}
