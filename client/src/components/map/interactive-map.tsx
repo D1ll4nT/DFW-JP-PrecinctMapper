@@ -154,10 +154,22 @@ export default function InteractiveMap({
         ))}
 
         {searchCoordinates && (
-          <Marker position={[searchCoordinates.lat, searchCoordinates.lng]}>
+          <Marker 
+            position={[searchCoordinates.lat, searchCoordinates.lng]}
+            icon={L.divIcon({
+              className: 'custom-marker',
+              html: '<div class="w-4 h-4 bg-red-500 border-2 border-white rounded-full shadow-lg"></div>',
+              iconSize: [16, 16],
+              iconAnchor: [8, 8]
+            })}
+          >
             <Popup>
-              <div className="text-center">
-                <strong>Search Result</strong>
+              <div className="text-center p-2">
+                <strong className="text-red-600">Search Location</strong>
+                <p className="text-sm text-gray-600 mt-1">
+                  Lat: {searchCoordinates.lat.toFixed(4)}<br/>
+                  Lng: {searchCoordinates.lng.toFixed(4)}
+                </p>
               </div>
             </Popup>
           </Marker>

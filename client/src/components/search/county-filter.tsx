@@ -6,11 +6,11 @@ interface CountyFilterProps {
 }
 
 const counties = [
-  { id: "all", name: "All Counties" },
-  { id: "collin", name: "Collin" },
-  { id: "dallas", name: "Dallas" },
-  { id: "denton", name: "Denton" },
-  { id: "tarrant", name: "Tarrant" }
+  { id: "All Counties", name: "All Counties" },
+  { id: "Collin County", name: "Collin County" },
+  { id: "Dallas County", name: "Dallas County" },
+  { id: "Denton County", name: "Denton County" },
+  { id: "Tarrant County", name: "Tarrant County" }
 ];
 
 export default function CountyFilter({ selectedCounty, onCountyChange }: CountyFilterProps) {
